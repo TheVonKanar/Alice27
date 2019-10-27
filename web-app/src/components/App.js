@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
-import Card from './Card.js'
+import '../style/App.css';
+import Card from './Card.js';
+import Photo1 from '../textures/photo1.jpg';
 
 function App() {
 	return (
@@ -12,16 +13,7 @@ function App() {
 					suis mon regard...
 				</p>
 
-				<Card></Card>
-
-				<a
-					className="AppLink"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
+				<Card Picture={Photo1}></Card>
 			</header>
 		</div>
 	);
