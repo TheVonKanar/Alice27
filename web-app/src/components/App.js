@@ -13,7 +13,7 @@ function App() {
 					suis mon regard...
 				</p>
 
-				<Card Picture={Photo1}></Card>
+				<Card Picture={Photo1} Name="IntroCard"></Card>
 			</header>
 		</div>
 	);

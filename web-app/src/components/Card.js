@@ -1,5 +1,8 @@
 import React from 'react';
+import ReactCodeInput from 'react-code-input';
 import '../style/Card.css';
+import $ from 'jquery';
+window.jQuery = window.$ = $;
 
 class Card extends React.Component {
 	constructor(props) {
@@ -8,21 +11,24 @@ class Card extends React.Component {
 			toggleState: false
 		};
 		
-		this.toggleCard = this.toggleCard.bind(this);
+		this.onCardClicked = this.onCardClicked.bind(this);
+		this.codeFieldId = this.props.Name + "CodeField";
 	}
 
 	render() {
 		return (
-			<div className="CardContainer" onClick={this.toggleCard}>
-				<img src={this.props.Picture} className="CardPicture" alt=""/>
-				<div className="CardFooter"></div>
-			</div>
+			<form className="CardContainer">
+				<img src={this.props.Picture} className="CardPicture" alt="" onClick={this.onCardClicked}/>
+				<div className="CardFooter">
+					<ReactCodeInput type='number' fields={4} />
+				</div>
+			</form>
 		);
 	}
 
-	toggleCard() {
-		this.setState(state => ({toggleState: !state.toggleState}));		
-		console.log(this.state);
+	onCardClicked() {
+		this.setState(state => ({toggleState: !state.toggleState}));
+		$('.CardFooter').find('input')[0].focus();
 	}
 }
 
