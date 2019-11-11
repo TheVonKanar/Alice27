@@ -18,6 +18,9 @@ class Card extends React.Component {
 	render() {
 		return (
 			<form className="CardContainer">
+				<div className="CardHeader">
+					<span>lol</span>
+				</div>
 				<img src={this.props.Picture} className="CardPicture" alt="" onClick={this.onCardClicked}/>
 				<div className="CardFooter">
 					<ReactCodeInput type='number' fields={4} />
