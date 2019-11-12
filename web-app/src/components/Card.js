@@ -17,11 +17,11 @@ class Card extends React.Component {
 
 	render() {
 		return (
-			<form className="CardContainer">
+			<form className="CardContainer" onClick={this.onCardClicked}>
 				<div className="CardHeader">
 					<span>lol</span>
 				</div>
-				<img src={this.props.Picture} className="CardPicture" alt="" onClick={this.onCardClicked}/>
+				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}></div>
 				<div className="CardFooter">
 					<ReactCodeInput type='number' fields={4} />
 				</div>
