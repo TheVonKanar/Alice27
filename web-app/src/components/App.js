@@ -6,14 +6,32 @@ import Photo1 from '../textures/photo1.jpg';
 function App() {
 	return (
 		<div className="App">
-			<header className="AppContent">
-				<p>
-					Pour trouver des réponses à tes questions,
-					<br/> 
-					suis mon regard...
-				</p>
-
-				<Card Picture={Photo1} Name="IntroCard"></Card>
+			<header className="AppContent" id="IntroPage">
+				<Card 
+					Name="IntroCard"
+					Picture={Photo1} 
+					Title="What do you see?" />
+			</header>
+			<header className="AppContent" id="MainPage">
+				<Card 
+					Name="MainCard1"
+					Picture={Photo1} 
+					Title="Card 1" />
+				
+				<Card 
+					Name="MainCard2"
+					Picture={Photo1} 
+					Title="Card 2" />
+				
+				<Card 
+					Name="MainCard3"
+					Picture={Photo1} 
+					Title="Card 3" />
+				
+				<Card 
+					Name="MainCard4"
+					Picture={Photo1} 
+					Title="Card 4" />
 			</header>
 		</div>
 	);
