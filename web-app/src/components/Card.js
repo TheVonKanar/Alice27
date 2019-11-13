@@ -11,6 +11,7 @@ class Card extends React.Component {
 		this.onCardClicked = this.onCardClicked.bind(this);
 		this.onCodeChanged = this.onCodeChanged.bind(this);
 		this.getCurrentCode = this.getCurrentCode.bind(this);
+		this.checkCurrentCode = this.checkCurrentCode.bind(this);
 		this.codeFieldId = this.props.Name + "CodeField";
 	}
 
@@ -22,7 +23,12 @@ class Card extends React.Component {
 				</div>
 				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}></div>
 				<div className="CardFooter">
-					<ReactCodeInput type='number' fields={4} onChange={this.onCodeChanged} />
+					<ReactCodeInput 
+						type='number' 
+						fields={4} 
+						onChange={this.onCodeChanged} 
+						value={localStorage[this.props.name + "Code"]} 
+						disabled={this.checkCurrentCode()} />
 				</div>
 			</form>
 		);
@@ -34,9 +40,10 @@ class Card extends React.Component {
 
 	onCodeChanged() {		
 		let currentCode = this.getCurrentCode();
-		console.log(currentCode);
-		if (currentCode.length === 4) {
-			// TODO: Checks.
+		localStorage[this.props.name + "Code"] = currentCode;
+
+		if (this.checkCurrentCode()) {
+			this.forceUpdate();
 			document.activeElement.blur();
 		}
 	}
@@ -48,6 +55,10 @@ class Card extends React.Component {
 		}
 
 		return currentCode;
+	}
+
+	checkCurrentCode() {
+		return localStorage[this.props.name + "Code"] === this.props.Code;
 	}
 }
 
