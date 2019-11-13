@@ -16,10 +16,12 @@ class Card extends React.Component {
 	}
 
 	render() {
+		let displaySubtitle = (this.props.Subtitle != null && this.props.Subtitle.length > 0 ? 'block' : 'none');
 		return (
 			<form className="CardContainer" id={this.props.Name} onClick={this.onCardClicked}>
 				<div className="CardHeader">
-					<span>{this.props.Title}</span>
+					<div className="CardTitle">{this.props.Title}</div>
+					<div className="CardSubtitle" style={{display: displaySubtitle}}>{this.props.Subtitle}</div>
 				</div>
 				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}></div>
 				<div className="CardFooter">

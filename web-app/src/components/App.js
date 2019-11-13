@@ -10,7 +10,8 @@ function App() {
 				<Card 
 					Name="IntroCard"
 					Picture={Photo1} 
-					Title="What do you see?"
+					Title="TUTORIAL" 
+					Subtitle="TEMP" /* Trouve où cette photo a été prise. Les deux premiers chiffres sont l'arrondissement, les deux suivant sont le numero (ex: Amplitude = 1243) */
 					Code="1234" />
 			</header>
 			<header className="AppContent" id="MainPage">
