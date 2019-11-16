@@ -6,13 +6,14 @@ import Photo1 from '../textures/photo1.jpg';
 function App() {
 	return (
 		<div className="App">
-			<header className="AppContent" id="IntroPage">
+			<header className="AppContent" id="TutorialPage">
 				<Card 
-					Name="IntroCard"
+					Name="TutorialCard"
 					Picture={Photo1} 
 					Title="TUTORIAL" 
-					Subtitle="TEMP" /* Trouve où cette photo a été prise. Les deux premiers chiffres sont l'arrondissement, les deux suivant sont le numero (ex: Amplitude = 1243) */
-					Code="1234" />
+					Subtitle="Code = Numéro de rue + Arrondissement"
+					SubtitleExample="Example: Amplitude = 4312"
+					Code="4312" />
 			</header>
 			<header className="AppContent" id="MainPage">
 				<Card 

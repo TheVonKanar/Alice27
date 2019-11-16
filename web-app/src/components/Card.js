@@ -13,15 +13,18 @@ class Card extends React.Component {
 		this.getCurrentCode = this.getCurrentCode.bind(this);
 		this.checkCurrentCode = this.checkCurrentCode.bind(this);
 		this.codeFieldId = this.props.Name + "CodeField";
+		this.isTutorialComplete = false;
 	}
 
 	render() {
 		let displaySubtitle = (this.props.Subtitle != null && this.props.Subtitle.length > 0 ? 'block' : 'none');
+		let displaySubtitleExample = (!this.isTutorialComplete && displaySubtitle ? 'block' : 'none');
 		return (
 			<form className="CardContainer" id={this.props.Name} onClick={this.onCardClicked}>
 				<div className="CardHeader">
-					<div className="CardTitle">{this.props.Title}</div>
-					<div className="CardSubtitle" style={{display: displaySubtitle}}>{this.props.Subtitle}</div>
+					<div className="CardTitle">{(this.isTutorialComplete ? "Bravo!" : this.props.Title)}</div>
+					<div className="CardSubtitle" style={{display: displaySubtitle}}>{(this.isTutorialComplete ? "Clique n'importe où pour continuer" : this.props.Subtitle)}</div>
+					<div className="CardSubtitle" style={{display: displaySubtitleExample}}>{this.props.SubtitleExample}</div>
 				</div>
 				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}></div>
 				<div className="CardFooter">
@@ -29,7 +32,7 @@ class Card extends React.Component {
 						type='number' 
 						fields={4} 
 						onChange={this.onCodeChanged} 
-						value={localStorage[this.props.name + "Code"]} 
+						value={localStorage[this.props.Name + "Code"]} 
 						disabled={this.checkCurrentCode()} />
 				</div>
 			</form>
@@ -37,16 +40,27 @@ class Card extends React.Component {
 	}
 
 	onCardClicked() {
-		$(`#${this.props.Name}`).find('input')[Math.min(this.getCurrentCode().length, 3)].focus();
+		if (this.isTutorialComplete) {
+			window.location.reload(false); 
+		}
+		else {
+			$(`#${this.props.Name}`).find('input')[Math.min(this.getCurrentCode().length, 3)].focus();
+		}
 	}
 
 	onCodeChanged() {		
 		let currentCode = this.getCurrentCode();
-		localStorage[this.props.name + "Code"] = currentCode;
+		localStorage[this.props.Name + "Code"] = currentCode;
 
 		if (this.checkCurrentCode()) {
-			this.forceUpdate();
+			if (this.props.Name === "TutorialCard")
+			{
+				this.isTutorialComplete = true;
+				localStorage["TutorialComplete"] = true;			
+			}
+			
 			document.activeElement.blur();
+			this.forceUpdate();
 		}
 	}
 
@@ -60,7 +74,7 @@ class Card extends React.Component {
 	}
 
 	checkCurrentCode() {
-		return localStorage[this.props.name + "Code"] === this.props.Code;
+		return localStorage[this.props.Name + "Code"] === this.props.Code;
 	}
 }
 

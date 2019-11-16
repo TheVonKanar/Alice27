@@ -9,10 +9,10 @@ let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 window.scrollTo(0, 0);
 
-if (localStorage["introComplete"] === "true") {
-  document.getElementById("IntroPage").style.display = "none";
+if (localStorage["TutorialComplete"] === "true") {
+  document.getElementById("TutorialPage").style.display = "none";
   document.getElementById("MainPage").style.display = "flex";
 } else {
-  document.getElementById("IntroPage").style.display = "flex";
+  document.getElementById("TutorialPage").style.display = "flex";
   document.getElementById("MainPage").style.display = "none";
 }
