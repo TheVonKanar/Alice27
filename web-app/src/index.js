@@ -16,3 +16,5 @@ if (localStorage["TutorialComplete"] === "true") {
   document.getElementById("TutorialPage").style.display = "flex";
   document.getElementById("MainPage").style.display = "none";
 }
+
+document.activeElement.blur();

@@ -37,6 +37,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .CardFooter {
@@ -66,4 +71,23 @@ input[type=number]::-webkit-outer-spin-button {
 
 .CardSubtitle {
   font-size: calc(10px + 1vmin);
+}
+
+@keyframes rainbow { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 25%}
+  100%{background-position:0% 50%}
+}
+
+.rainbow-text {
+  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+  text-align: center;
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: calc(var(--vh, 1vh) * 58);
+  animation: rainbow 8s ease infinite;
+  font-weight: bold;
+  vertical-align: middle;
+  /* margin-bottom: calc(var(--vh, 1vh) * 0); */
 }

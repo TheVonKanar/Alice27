@@ -14,9 +14,9 @@ function App() {
 				<Card 
 					Name="TutorialCard"
 					Picture={Photo0} 
-					Title="TUTORIAL" 
+					Title="Tutorial"
 					Subtitle="Code = Numéro de rue derrière moi + Arrondissement"
-					SubtitleExample="Example: Photo prise depuis Amplitude = 4312"
+					VictorySubtitle="Clique n'importe où pour continuer !"
 					Code="0404" />
 			</header>
 			<header className="AppContent" id="MainPage">
@@ -24,25 +24,33 @@ function App() {
 					Name="MainCard1"
 					Picture={Photo1} 
 					Title="Ça rime avec pistache"
-					Code="1013" />
+					VictorySubtitle="Tu as trouvé le premier chiffre !"
+					Code="1013"
+					Digit= "4"/>
 				
 				<Card 
 					Name="MainCard2"
 					Picture={Photo2} 
 					Title="Mon voisin Rodrigo"
-					Code="0614" />
+					VictorySubtitle="Tu as trouvé le deuxième chiffre !"
+					Code="0614" 
+					Digit="1" />
 				
 				<Card 
 					Name="MainCard3"
 					Picture={Photo3} 
 					Title="J'aime me beurrer la biscotte"
-					Code="0204" />
+					VictorySubtitle="Tu as trouvé le troisième chiffre !"
+					Code="0204" 
+					Digit="3" />
 				
 				<Card 
 					Name="MainCard4"
 					Picture={Photo4} 
 					Title="Une bonne glace"
-					Code="0105" />
+					VictorySubtitle="Tu as trouvé le dernier chiffre !"
+					Code="0105" 
+					Digit="8" />
 			</header>
 		</div>
 	);

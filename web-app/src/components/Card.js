@@ -17,23 +17,26 @@ class Card extends React.Component {
 	}
 
 	render() {
-		let displaySubtitle = (this.props.Subtitle != null && this.props.Subtitle.length > 0 ? 'block' : 'none');
-		let displaySubtitleExample = (!this.isTutorialComplete && displaySubtitle ? 'block' : 'none');
+		let checkCurrentCode = this.checkCurrentCode();
+		let showSubtitle = (checkCurrentCode && this.props.VictorySubtitle != null) || this.props.Subtitle != null;
+		let subtitleDisplay = (showSubtitle ? 'block' : 'none');
+		let giftDigitDisplay = (checkCurrentCode && this.props.Digit != null ? 'block' : 'none');
 		return (
 			<form className="CardContainer" id={this.props.Name} onClick={this.onCardClicked}>
 				<div className="CardHeader">
-					<div className="CardTitle">{(this.isTutorialComplete ? "Bravo!" : this.props.Title)}</div>
-					<div className="CardSubtitle" style={{display: displaySubtitle}}>{(this.isTutorialComplete ? "Clique n'importe où pour continuer" : this.props.Subtitle)}</div>
-					<div className="CardSubtitle" style={{display: displaySubtitleExample}}>{this.props.SubtitleExample}</div>
+					<div className="CardTitle">{(checkCurrentCode ? "Bravo !" : this.props.Title)}</div>
+					<div className="CardSubtitle" style={{display: subtitleDisplay}}>{(checkCurrentCode ? this.props.VictorySubtitle : this.props.Subtitle)}</div>
 				</div>
-				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}></div>
+				<div className="CardBody" style={{backgroundImage: 'url(' + this.props.Picture + ')'}}>
+					<span className="rainbow-text" style={{display: giftDigitDisplay}}>{this.props.Digit}</span>
+				</div>
 				<div className="CardFooter">
 					<ReactCodeInput 
 						type='number' 
 						fields={4} 
 						onChange={this.onCodeChanged} 
 						value={localStorage[this.props.Name + "Code"]} 
-						disabled={this.checkCurrentCode()} />
+						disabled={checkCurrentCode} />
 				</div>
 			</form>
 		);
