@@ -15,7 +15,7 @@ function App() {
 					Name="TutorialCard"
 					Picture={Photo0} 
 					Title="Tutorial"
-					Subtitle="Code = Numéro de rue derrière moi + Arrondissement"
+					Subtitle="Code = Numéro de rue derrière le photographe + Arrondissement (ex: 43 12)"
 					VictorySubtitle="Clique n'importe où pour continuer !"
 					Code="0404" />
 			</header>
@@ -47,7 +47,7 @@ function App() {
 				<Card 
 					Name="MainCard4"
 					Picture={Photo4} 
-					Title="Une bonne glace"
+					Title="Buon compleanno mi amor-ino"
 					VictorySubtitle="Tu as trouvé le dernier chiffre !"
 					Code="0105" 
 					Digit="8" />
